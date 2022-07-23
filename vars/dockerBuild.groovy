@@ -1,13 +1,11 @@
 def call( String gitCommitTag ){
-    def resultado = new StringBuilder()
-    def error     = new StringBuilder()
     println 'git commit Tag' + gitCommitTag
-        
     
-    String comando = "sh docker build -t gitCommitTag .".execute().text
-    println comando
-    
-    String comando2 = "sh docker tag gitCommitTag gitCommitTag:latest".execute().text
-    println comando2
+    def stdout = new StringWriter()
+    def stderr = new StringWriter()
+    ['/bin/sh', '-c', "docker build -t "+gitCommitTag].execute().waitForProcessOutput(stdout, stderr)
+
+    println "OUTPUT: " + stdout.toString()
+    println "ERRORS: " + stderr.toString()
 
 }
