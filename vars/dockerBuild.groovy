@@ -4,10 +4,10 @@ def call( String gitCommitTag ){
     println 'git commit Tag' + gitCommitTag
         
     
-    String comando = "docker build -t gitCommitTag .".execute().text
+    String comando = "sh docker build -t gitCommitTag .".execute().text
     println comando
     
-    String comando2 = "docker tag gitCommitTag gitCommitTag:latest".execute().text
+    String comando2 = "sh docker tag gitCommitTag gitCommitTag:latest".execute().text
     println comando2
 
 }
