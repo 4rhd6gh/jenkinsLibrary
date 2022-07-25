@@ -8,6 +8,6 @@ def call( String gitCommitTag, String systemName ){
     docker images --filter=reference='${systemName}*:latest'
     docker tag (docker images --filter=reference='${systemName}*:latest') ${systemName}:before
 
-    docker build -t ${systemName}_${gitCommitTag} .
+    docker build -t "${systemName}${gitCommitTag}" .
     """
 }
