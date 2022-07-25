@@ -7,10 +7,11 @@ def call( String gitCommitTag, String gitPreCommitTag, String systemName ){
     def dockerBuildTag = systemName.trim() + '-' + gitCommitTag.trim()
     def dockerPreBuildTag = systemName.trim() + '-' + gitPreCommitTag.trim()
 
-    def existPreBuildTag = sh (script: "docker images ${dockerPreBuildTag}", returnStdout: true)
+    def existPreBuildTag = sh (script: "docker images ", returnStdout: true)
+    String[] preBuildTag = existPreBuildTag.split("\n")
 
-
-    println 'existPreBuildTag:========== ' + existPreBuildTag.getClass()
+    for( String values : preBuildTag )
+      println(values);
 
     sh """
     docker tag "${dockerPreBuildTag}" "${dockerPreBuildTag:"backup"}"
