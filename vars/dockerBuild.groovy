@@ -1,7 +1,13 @@
-def call( String gitCommitTag ){
-    println 'git commit Tag' + gitCommitTag
+def call( String gitCommitTag, String systemName ){
+
+    println 'System:========== ' + systemName
+    println 'git commit Tag:========== ' + gitCommitTag
     
     sh """
-    docker build -t ${gitCommitTag} .
+    
+    docker images --filter=reference='${systemName}*:latest'
+    docker tag (docker images --filter=reference='${systemName}*:latest') ${systemName}:before
+
+    docker build -t ${systemName}_${gitCommitTag} .
     """
 }
