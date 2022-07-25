@@ -4,7 +4,7 @@ def call( String gitCommitTag, String gitPreCommitTag, String systemName ){
     println 'git commit Tag:========== ' + gitCommitTag
     println 'git pre commit Tag:========== ' + gitPreCommitTag
     
-    def dockerBuildTag = systemName + '-' + gitCommitTag
+    def dockerBuildTag = systemName.trim() + '-' + gitCommitTag.trim()
 
     sh """
     docker build -t "${dockerBuildTag}" .
