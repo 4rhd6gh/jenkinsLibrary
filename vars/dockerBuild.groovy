@@ -10,7 +10,7 @@ def call( String gitCommitTag, String gitPreCommitTag, String systemName ){
     def existPreBuildTag = sh (script: "docker images ${dockerPreBuildTag}", returnStdout: true)
 
 
-    println 'existPreBuildTag:========== ' + existPreBuildTag..getClass()
+    println 'existPreBuildTag:========== ' + existPreBuildTag.getClass()
 
     sh """
     docker tag "${dockerPreBuildTag}" "${dockerPreBuildTag:"backup"}"
