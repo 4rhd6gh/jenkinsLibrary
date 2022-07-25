@@ -12,7 +12,7 @@ def call( String gitCommitTag, String gitPreCommitTag, String systemName ){
 
     if( preBuildTag.length > 1 ){
         sh """
-            docker tag "${dockerPreBuildTag}" "${dockerPreBuildTag:"backup"}"
+            docker tag "${dockerPreBuildTag}:latest" "${dockerPreBuildTag}:backup"
             docker build -t "${dockerBuildTag}" .
         """
     }else{
