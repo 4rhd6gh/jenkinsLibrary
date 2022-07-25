@@ -6,7 +6,7 @@ def call( String gitCommitTag, String gitPreCommitTag, String systemName ){
     
     sh """
     
-    docker tag ${systemName}${gitPreCommitTag}:latest') (${systemName}${gitPreCommitTag}:before)
+    docker tag ${systemName}${gitPreCommitTag}:latest' ${systemName}${gitPreCommitTag}:before
 
     docker build -t "${systemName}${gitCommitTag}" .
     """
