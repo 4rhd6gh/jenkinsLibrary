@@ -14,6 +14,7 @@ def call( String gitCommitTag, String gitPreCommitTag, String systemName ){
         sh """
             docker tag "${dockerPreBuildTag}:latest" "${dockerPreBuildTag}:backup"
             docker build -t "${dockerBuildTag}" .
+            dokcer push "${dockerBuildTag}"
         """
     }else{
         sh """
